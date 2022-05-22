@@ -141,8 +141,7 @@ function mouseClicked(evt){
     try{
       placeQueen(X,Y);
     }catch(err){
-      if(err instanceof TypeError) alert("Please Click on a valid Position");
-      else alert(err);
+      if(!(err instanceof TypeError)) alert(err);
     }
 }
 
@@ -152,8 +151,7 @@ function doubleClicked(evt){
   try{
     removeQueen(X,Y);
   }catch(err){
-    if(err instanceof TypeError) alert("Please Click on a valid Position");
-    else alert(err);
+    if(!(err instanceof TypeError)) alert(err);
   }
 }
 
