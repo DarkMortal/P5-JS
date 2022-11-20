@@ -7,7 +7,7 @@ var width, height, slider;
 
 //TODO: Load the Image
 function preload(){ 
-    img = loadImage(Vegito);
+    img = loadImage("./vegito.jpg");
 }
 
 function setup() {
