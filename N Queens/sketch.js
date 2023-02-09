@@ -2,7 +2,9 @@ const width = 75;
 
 var grid = [], img, n =0;
 
-function preload(){ img = loadImage("./queen.png"); }
+function preload(){ 
+  img = loadImage("./queen.png");
+}
 
 function setup() {
   imageMode(CENTER);
