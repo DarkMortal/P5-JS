@@ -125,18 +125,27 @@ function keyPressed() {
     }
 }
 
-const isTouchDevice = () => (('ontouchstart' in window) ||
+const isTouchDevice = () => (
+    ('ontouchstart' in window) ||
     (navigator.maxTouchPoints > 0) ||
-    (navigator.msMaxTouchPoints > 0));
+    (navigator.msMaxTouchPoints > 0)
+);
+
+const isNotOutOfBounds = (x,y) => (
+    (x >= 0) &&
+    (x <= width) &&
+    (y >= 0) &&
+    (y <= height)
+);
 
 function mouseDragged() {
-    if (!isTouchDevice()) {
+    if (!isTouchDevice() && isNotOutOfBounds(mouseX, mouseY)) {
         xOffset += (pmouseX - mouseX);
         yOffset += (pmouseY - mouseY);
     }
 }
 
-window.onkeydown = (evt) => {
+/*window.onkeydown = (evt) => {
     if (evt.keyCode == RIGHT_ARROW ||
         evt.keyCode == LEFT_ARROW ||
         evt.keyCode == UP_ARROW ||
@@ -153,7 +162,7 @@ window.onkeydown = (evt) => {
 
 // for mobile devices (can be ignored)
 
-/*if(isTouchDevice()){
+if(isTouchDevice()){
   Hammer(document.getElementById('canvas')).on('panright',() => xOffset -= 5);
   Hammer(document.getElementById('canvas')).on('panleft',() => xOffset += 5);
   Hammer(document.getElementById('canvas')).on('panup',() => yOffset += 5);

@@ -18,8 +18,9 @@ canvas {
 
 .pointer {
   width: fit-content;
-  margin: auto;
   margin-bottom: 10px;
+  font-size: larger;
+  margin-top: 35px;
 }
 
 .eqn {
@@ -27,9 +28,21 @@ canvas {
   flex-direction: row;
   column-gap: 10px;
   width: fit-content;
-  margin: auto;
   align-self: center;
   margin-top: 5px;
+}
+
+.container{
+  display: inline-flex;
+  text-align: left;
+  column-gap: 20px;
+  background-color: #111827;
+  padding: 20px;
+  padding-bottom: 5px;
+}
+
+input[type="text"]{
+  font-size: larger;
 }
 
 .eqn button {

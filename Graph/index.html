@@ -3,41 +3,45 @@
 
 <head>
     <meta charset="utf-8" />
-    <script src="../Library/p5.js"></script>
+    <script src="../Library/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js" crossorigin="anonymous"
         referrerpolicy="no-referrer"></script>
     </script>
     <!--<script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>-->
-    <link rel="stylesheet" href="./style.css"/>
+    <link rel="stylesheet" href="./style.css" />
     <script src="./script.js"></script>
 </head>
 
 <body>
     <h1><u>Graphing Calculator</u></h1>
-    <div class="pointer">
-        Pointer at X: <span id="x">0</span> Y: <span id="y">0</span>
-    </div>
-    <div id="canvas"></div>
-    <div style="text-align: left; margin-left: 20px;">
-        <h2><u>How to use</u></h2>
-        <ul>
-            <li>Use arrow keys to navigate across the graph</li>
-            <li>Use <kbd>+</kbd> and <kbd>-</kbd> keys to zoom in and out respectively</li>
-        </ul>
-    </div>
-  <strong>Graph-1</strong>
-    <div class="eqn">
-        <input type="text" id="eq1" />
-        <input type="color" value="#000000" id="col1" /><br />
-        <button>Clear</button>
-        <button>Draw</button>
-    </div><br/>
-  <strong>Graph-2</strong>
-    <div class="eqn">
-        <input type="text" id="eq2" />
-        <input type="color" value="#000000" id="col2" /><br />
-        <button>Clear</button>
-        <button>Draw</button>
+    <div class="container">
+        <!--<div style="text-align: left; margin-left: 20px;">
+            <h2><u>How to use</u></h2>
+            <ul>
+                <li>Use arrow keys to navigate across the graph</li>
+                <li>Use <kbd>+</kbd> and <kbd>-</kbd> keys to zoom in and out respectively</li>
+            </ul>
+        </div>-->
+        <div>
+            <strong>Graph-1</strong>
+            <div class="eqn">
+                <input type="text" id="eq1" />
+                <input type="color" value="#000000" id="col1" /><br />
+                <button>Clear</button>
+                <button>Draw</button>
+            </div><br />
+            <strong>Graph-2</strong>
+            <div class="eqn">
+                <input type="text" id="eq2" />
+                <input type="color" value="#000000" id="col2" /><br />
+                <button>Clear</button>
+                <button>Draw</button>
+            </div>
+            <div class="pointer">
+                Pointer at X: <span id="x">0</span> Y: <span id="y">0</span>
+            </div>
+        </div>
+        <div id="canvas"></div>
     </div>
 </body>
 
