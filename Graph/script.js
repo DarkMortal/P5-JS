@@ -4,6 +4,9 @@ let xOffset, yOffset;
 let a = 20, N = 5, unit = N * a;
 let enabled1 = false, enabled2 = false;
 
+let i_min_1 = 0, i_max_1 = 0, isMark1 = false;
+let i_min_2 = 0, i_max_2 = 0, isMark2 = false;
+
 let MIN_N = 2, MAX_N = 5;
 
 function updatePointer() {
@@ -21,14 +24,38 @@ function setup() {
     let eqns = document.querySelectorAll('.eqn');
     eqns[0].children[3].onclick = () => enabled1 = false;
     eqns[0].children[4].onclick = () => enabled1 = true;
-    eqns[1].children[3].onclick = () => enabled2 = false;
-    eqns[1].children[4].onclick = () => enabled2 = true;
+    eqns[2].children[3].onclick = () => enabled2 = false;
+    eqns[2].children[4].onclick = () => enabled2 = true;
+
+    eqns[1].children[3].onclick = () => {
+        i_min_1 = eqns[1].children[0].value;
+        i_max_1 = eqns[1].children[1].value;
+        if(i_min_1 === '' || i_max_1 === ''){
+            alert("Enter a valid range of values");
+            isMark1 = false;
+            return;
+        }
+        isMark1 = true;
+    };
+    eqns[1].children[4].onclick = () => isMark1 = false;
+    eqns[3].children[3].onclick = () => {
+        i_min_2 = eqns[3].children[0].value;
+        i_max_2 = eqns[3].children[1].value;
+        if(i_min_2 === '' || i_max_2 === ''){
+            alert("Enter a valid range of values");
+            isMark2 = false;
+            return;
+        }
+        isMark2 = true;
+    };
+    eqns[3].children[4].onclick = () => isMark2 = false;
 }
 
 let f1 = x => math.evaluate(document.getElementById("eq1").value, { x: x })
 let f2 = x => math.evaluate(document.getElementById("eq2").value, { x: x })
 
 function draw() {
+    clear();
     background(255);
     let pY1 = null;
     let pY2 = null;
@@ -37,8 +64,8 @@ function draw() {
         let p = yOffset + i;
         if (t % a == 0) {
             if (t == 0) {
-                stroke(255, 0, 0);
-                strokeWeight(3);
+                stroke(0, 0, 0);
+                strokeWeight(2);
                 line(i, 0, i, SIZE);
                 let j = 0, k = 1;
                 while (j < SIZE) {
@@ -52,14 +79,14 @@ function draw() {
             }
             else {
                 stroke(0);
-                strokeWeight(1);
+                strokeWeight(0.5);
                 line(i, 0, i, SIZE);
             }
         }
         if (p % a == 0) {
             if (p == 0) {
-                stroke(0, 0, 255);
-                strokeWeight(3);
+                stroke(0, 0, 0);
+                strokeWeight(2);
                 line(0, i, SIZE, i);
                 let j = 0, k = 1;
                 while (j < SIZE) {
@@ -73,17 +100,24 @@ function draw() {
             }
             else {
                 stroke(0);
-                strokeWeight(1);
+                strokeWeight(0.5);
                 line(0, i, SIZE, i);
             }
         }
         if (enabled1) {
             try {
-                let y = -unit * f1(t / unit) - yOffset;
+                let x_temp = t / unit;
+                let y = -unit * f1(x_temp) - yOffset;
                 if (i > 0) {
                     strokeWeight(2);
                     stroke(document.getElementById("col1").value);
                     line(i - 1, pY1, i, y);
+
+                    if(isMark1 && x_temp <= i_max_1 && x_temp >= i_min_1){
+                        strokeWeight(0.7);
+                        stroke(document.getElementById("mark_col1").value);
+                        line(i, -yOffset, i, y);
+                    }
                 }
                 pY1 = y;
             } catch {
@@ -92,11 +126,18 @@ function draw() {
         }
         if (enabled2) {
             try {
-                let y = -unit * f2(t / unit) - yOffset;
+                let x_temp = t / unit;
+                let y = -unit * f2(x_temp) - yOffset;
                 if (i > 0) {
                     strokeWeight(2);
                     stroke(document.getElementById("col2").value);
                     line(i - 1, pY2, i, y);
+
+                    if(isMark2 && x_temp <= i_max_2 && x_temp >= i_min_2){
+                        strokeWeight(0.7);
+                        stroke(document.getElementById("mark_col2").value);
+                        line(i, -yOffset, i, y);
+                    }
                 }
                 pY2 = y;
             } catch {

@@ -4,7 +4,7 @@ html, body {
   color: white;
   text-align: center;
   font-family: sans-serif;
-  background-color: #012148;
+  background-color: #4288e4;
 }
 
 canvas {
@@ -39,10 +39,17 @@ canvas {
   background-color: #111827;
   padding: 20px;
   padding-bottom: 5px;
+  /*width: 80%;*/
 }
 
 input[type="text"]{
   font-size: larger;
+  width: 40%;
+}
+input[type="number"]{
+  font-size: larger;
+  width: 20%;
+  
 }
 
 .eqn button {

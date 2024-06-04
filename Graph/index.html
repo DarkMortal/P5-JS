@@ -25,18 +25,30 @@
         <div>
             <strong>Graph-1</strong>
             <div class="eqn">
-                <input type="text" id="eq1" />
+                <input type="text" id="eq1" placeholder="Enter first equation here" />
                 <input type="color" value="#000000" id="col1" /><br />
                 <button>Clear</button>
                 <button>Draw</button>
+            </div>
+            <div class="eqn">
+                <input type="number" placeholder="lower limit"/>
+                <input type="number" placeholder="upper limit"/>
+                <input type="color" value="#000000" id="mark_col1" />
+                <button>Mark area</button><button>Clear area</button>
             </div><br />
             <strong>Graph-2</strong>
             <div class="eqn">
-                <input type="text" id="eq2" />
+                <input type="text" id="eq2" placeholder="Enter second equation here" />
                 <input type="color" value="#000000" id="col2" /><br />
                 <button>Clear</button>
-                <button>Draw</button>
+                <button>Draw</button><br/>
             </div>
+            <div class="eqn">
+                <input type="number" placeholder="lower limit"/>
+                <input type="number" placeholder="upper limit"/>
+                <input type="color" value="#000000" id="mark_col2" />
+                <button>Mark area</button><button>Clear area</button>
+            </div><br />
             <div class="pointer">
                 Pointer at X: <span id="x">0</span> Y: <span id="y">0</span>
             </div>
